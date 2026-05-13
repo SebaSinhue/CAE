@@ -1,0 +1,117 @@
+---
+---
+
+<nav class="bg-gray-600 fixed w-full z-30 top-0 start-0 border-b border-white/10">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
+    
+    <a href="/" class="group flex items-center space-x-4">
+      <img src="Divisiones_Blanco-07.png" class="h-14 transition-transform duration-300" />
+      <img src="ICO-09.png" class="h-14 transition-transform duration-300" />
+      <div class="flex flex-col justify-center">
+        <span class="font-sans-flex text-2xl font-bold tracking-normal text-gray-100 leading-none">CAE</span>
+        <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-20">
+          <p class="text-[9px] font-sans-flex text-gray-100 uppercase tracking-widest pt-1 leading-tight">
+            Centro de Apoyo <br /> Extracurricular
+          </p>
+        </div>
+      </div>
+    </a>
+
+    <button id="boton-menu" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-lg md:hidden hover:bg-gray-900 focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+    </button>
+
+    <div id="menu-principal" class="hidden w-full md:block md:w-auto absolute md:static top-full left-0 right-0 mx-4 md:mx-0 mt-3 md:mt-0 z-50">
+      <ul class="flex flex-col font-medium p-4 md:p-0 border border-white/10 rounded-2xl bg-black/95 backdrop-blur-xl shadow-2xl md:shadow-none md:flex-row md:space-x-8 md:border-0 md:bg-transparent">
+        <li><a href="/" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0">Inicio</a></li>
+        <li><a href="#nosotros" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0">Nosotros</a></li>
+        <li><a href="#informacion" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0">Información importante</a></li>
+        
+        <li class="relative grupo-recursos py-3 md:py-0">
+          <button id="boton-recursos" class="flex items-center justify-between w-full px-4 text-white hover:text-[#F2A900] md:p-0 md:w-auto transition-colors cursor-pointer">
+            Recursos y Servicios 
+            <svg class="w-2.5 h-2.5 ms-2.5" fill="none" stroke="currentColor" viewBox="0 0 10 6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+          </button>
+          
+          <div id="lista-recursos" class="hidden md:absolute z-50 font-normal bg-white rounded-xl shadow-xl w-full md:w-52 md:top-full md:mt-0 mt-2 overflow-hidden border border-gray-100">
+            <ul class="py-2 text-sm text-gray-800">
+              <li><a href="/manuales" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Manuales de Uso</a></li>
+              <li><a href="/sgc" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Sistema de Gestión de Calidad</a></li>
+              <li><a href="https://sites.google.com/aragon.unam.mx/laboratoriosaragon/inicio" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Laboratorios</a></li>
+              <li><a href="/cursos" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Cursos Intersemestrales</a></li>
+              <li><a href="https://sites.google.com/aragon.unam.mx/fesaragonico/inicio?authuser=0" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">ICO</a></li>
+              <li><a href="/buzon" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Buzón</a></li>
+              <li><a href="" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Servicio Social</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  (function() {
+    const botonMenu = document.getElementById('boton-menu');
+    const menuPrincipal = document.getElementById('menu-principal');
+    const botonRecursos = document.getElementById('boton-recursos');
+    const listaRecursos = document.getElementById('lista-recursos');
+
+    const resetearAlRedimensionar = () => {
+      if (window.innerWidth >= 768) {
+        menuPrincipal?.classList.add('hidden');
+        listaRecursos?.classList.add('hidden');
+      }
+    };
+
+    botonMenu?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuPrincipal?.classList.toggle('hidden');
+    });
+
+    botonRecursos?.addEventListener('click', (e) => {
+      if (window.innerWidth < 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        listaRecursos?.classList.toggle('hidden');
+      }
+    });
+
+    window.addEventListener('resize', resetearAlRedimensionar);
+
+    document.addEventListener('click', () => {
+      if (window.innerWidth < 768) {
+        menuPrincipal?.classList.add('hidden');
+        listaRecursos?.classList.add('hidden');
+      }
+    });
+  })();
+</script>
+
+<style>
+  @media (min-width: 768px) {
+    .grupo-recursos {
+      padding-bottom: 20px;
+      margin-bottom: -20px;
+    }
+    
+    #menu-principal {
+      display: block !important;
+    }
+
+    .grupo-recursos:hover #lista-recursos {
+      display: block;
+    }
+
+    #lista-recursos {
+      top: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    #menu-principal {
+      position: absolute;
+      top: 100%;
+    }
+  }
+</style>
