@@ -1,0 +1,22 @@
+---
+interface Props {
+  titulo: string;
+}
+
+const { titulo } = Astro.props;
+---
+
+<div 
+  class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+  data-aos="fade-up"
+>
+  <div class="absolute top-0 left-0 w-full h-1.5 bg-[#FFF7E6] group-hover:bg-[#F2A900] transition-colors duration-300"></div>
+
+  <h2 class="font-sans-flex text-2xl font-bold mb-4 text-[#111827] group-hover:text-[#F2A900] transition-colors duration-300">
+    {titulo}
+  </h2>
+  
+  <div class="text-[#4B5563] text-base leading-relaxed font-normal">
+    <slot />
+  </div>
+</div>
