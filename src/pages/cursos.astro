@@ -2,9 +2,240 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import Card from '../components/Card.astro';
+
+// =========================================================================
+// LISTA OFICIAL DE CURSOS CON SUS DATOS Y RUTAS DE IMÁGENES
+// =========================================================================
+const cursos = [
+  {
+    titulo: "Visión Artificial con Redes Neuronales Profundas",
+    instructor: "Dr. Arturo Rodríguez García",
+    fecha: "Inicia 22 de junio de 2026 (Registro límite: 18 de junio)",
+    horas: "10 Horas",
+    modalidad: "Línea",
+    cupo: "40 lugares",
+    categoria: "Inteligencia Artificial",
+    link: "/cursos/vision-artificial.jpg",
+    registro: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSc7VNYsX90Fpqenbmy5RNMZBihczb2Lmg-bvMI3Caymkjre-g/viewform?usp=send_form"
+  },
+  {
+    titulo: "Curso de Finanzas e Inversiones Personales",
+    instructor: "Lic. Rogelio Ricardo García Hernández",
+    fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "20 Horas",
+    modalidad: "Presencial",
+    cupo: "30 lugares",
+    categoria: "Finanzas",
+    link: "/cursos/finanzas.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSfAgwvoAdCp1TQlhwiDILC7FE868EzwXEIAUZhvt0cT0kHGGw/viewform"
+  },
+  {
+    titulo: "Curso de Spring Boot Básico-Intermedio",
+    instructor: "Ing. Bruno Hernández Hernández",
+    fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "30 Horas",
+    modalidad: "Presencial",
+    cupo: "30 lugares",
+    categoria: "Programación",
+    link: "/cursos/spring-boot.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSeZAnZxijSn-pnxwsokKPHdqVy8eaw2EEZG4d14_c6CK6JpXw/viewform?usp=send_form"
+  },
+  {
+    titulo: "Tiempo en tus manos: Estrategias efectivas para el éxito universitario",
+    instructor: "Mtra. Blanca Pamela Aburto Camacho",
+    fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "30 Horas",
+    modalidad: "Presencial",
+    cupo: "30 lugares",
+    categoria: "Desarrollo Personal",
+    link: "/cursos/tiempo-manos.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSeqePKWfBqdIuXXNRFrlmxgoFae-UzC-pWKvF4Lq6a5rYgQYQ/viewform"
+  },
+  {
+    titulo: "Curso: Competencias Profesionales en Ingeniería",
+    instructor: "C. Ilse Muñoz Rodríguez",
+    fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "20 Horas",
+    modalidad: "Presencial",
+    cupo: "20 lugares",
+    categoria: "Ingeniería",
+    link: "/cursos/competencias.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSfok1NyulRGj-MbFYdghVzbevOilf6L2dxjOaG6lwU9_GVhdw/viewform"
+  },
+  {
+    titulo: "Curso: Cash Flow para Ingenieros",
+    instructor: "Ing. Jorge Lucio Juárez Martínez",
+    fecha: "Inicia 16 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "10 Horas",
+    modalidad: "Línea",
+    cupo: "30 lugares",
+    categoria: "Finanzas",
+    link: "/cursos/cash-flow.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSfGg_tTh_rOGLSd2BA3ltuVaJxFHZyp65Ho_WZwfPnAaWhIkg/viewform"
+  },
+  {
+    titulo: "Curso: Fundamentos de Cálculo Vectorial",
+    instructor: "C. Anahí Alondra Lozano Ramos",
+    fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "20 Horas",
+    modalidad: "Línea",
+    cupo: "30 lugares",
+    categoria: "Ciencias Básicas",
+    link: "/cursos/calculo-vectorial.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLScNY3Cc4WvGwIcsZyIacUzklcWIRIKwGn4kapzP9-HnBfeBew/viewform"
+  },
+  {
+    titulo: "Curso: Edición Básica de Video",
+    instructor: "C. Carmen Yuliana Estrada Fernández",
+    fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "10 Horas",
+    modalidad: "Presencial",
+    cupo: "10 lugares",
+    categoria: "Diseño y Multimedia",
+    link: "/cursos/edicion-video.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSfaCYHDbVYE8eELe7XNbNcXU1WiHA9r1A55Z-mvu0_hKdEcZg/viewform"
+  },
+  {
+    titulo: "Introducción a las APIs con Mulesoft",
+    instructor: "M. en C. Gabriel Solis Aguilar",
+    fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "20 Horas",
+    modalidad: "Línea",
+    cupo: "15 lugares",
+    categoria: "Programación",
+    link: "/cursos/mulesoft.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSe7am5LSfkwMTEryWeSXq-Vn5yUGVXAdxb3IV3OIFdsQEwLYw/viewform"
+  },
+  {
+    titulo: "PANDAS: Análisis Exploratorio y Limpieza de Datos",
+    instructor: "Dr. Omar Mendoza González",
+    fecha: "Inicia 22 de junio de 2026 (Registro límite: 18 de junio)",
+    horas: "10 Horas",
+    modalidad: "Línea",
+    cupo: "100 lugares",
+    categoria: "Data Science",
+    link: "/cursos/pandas.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSdVMTOgCiXSSY1CpPUpCkSy_1-YVNe1XApJJgQ6mU_FKB2LpA/viewform"
+  },
+  {
+    titulo: "Introducción a SCRUM",
+    instructor: "M. en C. Gabriel Solis Aguilar",
+    fecha: "Inicia 29 de junio de 2026 (Registro límite: 25 de junio)",
+    horas: "10 Horas",
+    modalidad: "Línea",
+    cupo: "-",
+    categoria: "Metodologías Ágiles",
+    link: "/cursos/scrum.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSf5f3WM2yeEAPhTc0i38Ha5EwCVWH4wOkz2ZElVagiREoUhMw/viewform"
+  },
+  {
+    titulo: "Diseño de Interfaces",
+    instructor: "Aaron Isaías Velasco López",
+    fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "20 Horas",
+    modalidad: "Presencial",
+    cupo: "19 lugares",
+    categoria: "Diseño Web",
+    link: "/cursos/interfaces.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSfxqt8K-L_OhQLTl4PgghVqCzjNwaUmlxbm90XT-sPYWeKeLA/viewform"
+  },
+  {
+    titulo: "NumPy para Computación Científica",
+    instructor: "Miguel Ángel Sánchez Hernández",
+    fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "10 Horas",
+    modalidad: "Línea",
+    cupo: "40 lugares",
+    categoria: "Data Science",
+    link: "/cursos/numpy.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLScXZLwPoUrSkwOuZF4Oqx5OwaRWEAcaNoE7VeHEB93qjh49bw/viewform"
+  },
+  {
+    titulo: "Prácticas de Desarrollo de Software, Docker y Node.js",
+    instructor: "Ing. Victor Hugo Martinez Bravo",
+    fecha: "Inicia 30 de junio de 2026 (Registro límite: 25 de junio)",
+    horas: "10 Horas",
+    modalidad: "Línea",
+    cupo: "20 lugares",
+    categoria: "Programación",
+    link: "/cursos/docker-nodejs.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSdOoxEARozwxuEYqvfhXAAx0bRH9oSTgHLhF58mQkKEVkrNWw/viewform"
+  },
+  {
+    titulo: "Taller de Planeación Prospectiva",
+    instructor:"Ing. Pedro Uriel Martinez Martinez",
+    fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
+    horas: "10 Horas",
+    modalidad: "Línea",
+    cupo: "15 lugares",
+    categoria: "Ingeniería",
+    link: "/cursos/planeacion-prospectiva.jpg",
+    registro: "https://docs.google.com/forms/d/e/1FAIpQLSdfaINEqJHrxYU30mxyvQIXlS3Nj8Pz_oL4Gb1Tyr5A-3J5TA/viewform"
+  }
+];
 ---
 
 <Layout title="Cursos Intersemestrales - CAE FES Aragón">
-	<Navbar />
-	<Footer />
+    <Navbar />
+    
+    <div class="max-w-7xl mx-auto px-6 mt-32 mb-20">
+        
+        <div class="mb-12 border-b border-[#9CA3AF]/30 pb-8 text-center md:text-left">
+            <h1 class="text-4xl font-extrabold text-[#111827] tracking-tight sm:text-5xl">
+                Cursos <span class="text-[#F2A900]">Intersemestrales</span>
+            </h1>
+            <p class="text-[#4B5563] mt-3 text-lg max-w-3xl">
+                ¡Fortalece tus habilidades con nuestra oferta de cursos de junio! Contamos con modalidades presenciales y en línea para potenciar tu perfil profesional.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {cursos.map((curso) => (
+                <Card titulo={curso.titulo}>
+                    <div class="flex flex-col h-full justify-between mt-3">
+                        <div>
+                            <div class="flex gap-2 mb-4 flex-wrap">
+                                <span class="bg-[#FFF7E6] text-[#D49400] text-xs font-bold px-3 py-1 rounded-full border border-[#F2A900]/30">
+                                    {curso.categoria}
+                                </span>
+                                <span class={`text-xs font-bold px-3 py-1 rounded-full border ${
+                                    curso.modalidad === 'Línea' 
+                                    ? 'bg-blue-50 text-blue-600 border-blue-200' 
+                                    : 'bg-green-50 text-green-600 border-green-200'
+                                }`}>
+                                    💻 {curso.modalidad}
+                                </span>
+                            </div>
+
+                            <div class="space-y-2 text-sm text-[#4B5563] mb-6">
+                                <p><strong class="text-[#111827]">Impartido por:</strong> {curso.instructor}</p>
+                                <p><strong class="text-[#111827]">Calendario:</strong> {curso.fecha}</p>
+                                <div class="flex justify-between text-xs text-[#9CA3AF] pt-2 border-t border-gray-100">
+                                    <span>⏱️ {curso.horas}</span>
+                                    <span>👥 Cupo: {curso.cupo}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col gap-2">
+                            <a href={curso.link} target="_blank" rel="noopener noreferrer" class="w-full text-center inline-block px-4 py-2 text-xs font-bold text-[#374151] bg-[#FFF7E6] border border-[#F2A900]/40 rounded-lg hover:bg-[#F2A900] hover:text-white transition-all">
+                                 Ver Folleto Informativo
+                            </a>
+
+                            <a href={curso.registro} target="_blank" rel="noopener noreferrer" class={`w-full text-center inline-block px-4 py-2.5 text-sm font-bold text-white rounded-lg transition-all ${
+                                curso.registro === '#' 
+                                ? 'bg-gray-300 cursor-not-allowed pointer-events-none' 
+                                : 'bg-[#111827] hover:bg-[#374151] hover:shadow-md'
+                            }`}>
+                                {curso.registro === '#' ? 'Registro No Disponible' : ' Inscribirse Directo'}
+                            </a>
+                        </div>
+                    </div>
+                </Card>
+            ))}
+        </div>
+    </div>
+
+    <Footer />
 </Layout>
