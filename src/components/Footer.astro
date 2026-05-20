@@ -1,4 +1,44 @@
 ---
+import { Icon } from "astro-icon/components";
+
+---
+ 
+ 
+ <footer id="contacto" class="bg-[#4B5563] px-6 py-12 text-white">
+    <div class="mx-auto max-w-6xl text-center">
+        <h2 class="text-2xl font-bold uppercase tracking-[0.15em]">
+            Contacto
+        </h2>
+        <div class="mt-6 space-y-1 text-sm text-gray-200">
+            <p>Ing. Ana Claudia Reyes Cruz</p>
+            <p>Ing. Roberto Agustín García Castrejón</p>
+        </div>
+    </div>
+
+
+    <div class="mt-6 flex justify-center gap-5">
+      <a
+        href="https://www.facebook.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+        class="text-white transition hover:scale-110 hover:text-gray-300"
+      >
+        <Icon name="simple-icons:facebook" size={28} />
+      </a>
+
+      <a
+        href="https://www.instagram.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        class="text-white transition hover:scale-110 hover:text-gray-300"
+      >
+        <Icon name="simple-icons:instagram" size={28} />
+      </a>
+    </div>
+</footer>       
+---
 ---
 <footer class="bg-gray-600 text-white py-8 mt-auto border-t border-white/10">
     <div class="container mx-auto px-4 text-center">

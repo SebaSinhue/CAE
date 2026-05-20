@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+html {
+    scroll-behavior: smooth;
+}
+
+section,
+main {
+    scroll-margin-top: 90px;
 @theme
 {
     --font-sans-flex: 'Google Sans Flex', sans-serif;
