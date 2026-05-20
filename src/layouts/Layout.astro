@@ -1,0 +1,26 @@
+---
+import '../styles/global.css';
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+		<link rel="icon" type="image/png" href="/ICO-08.png" />
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+	</head>
+	<body class="flex flex-col min-h-screen bg-gray-100">
+        <slot />
+
+		<script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script is:inline>
+		AOS.init({
+			duration: 800,
+			once: true,
+		});
+		</script>
+	</body>
+</html>
