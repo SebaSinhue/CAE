@@ -2,21 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import PDF from '../components/PDF.astro';
-const manuales = [
-  {
-    id: "manual-computadora",
-    title: "MANUAL DE USO PARA UNA COMPUTADORA DE ESCRITORIO",
-    pdfUrl: "/CAE/Manuales/manual-uso-computadora.pdf"
-  },
-  {
-    id: "manual-extintor",
-    title: "MANUAL DE USO PARA UN EXTINTOR",
-    pdfUrl: "/CAE/Manuales/manual-extintor.pdf"
-  }
-];
 ---
-<Layout title="Manuales de Uso | CAE FES Aragón">
+
+<Layout title="Buzón de Quejas y Sugerencias | CAE FES Aragón">
     <Navbar />
     
     <section class="relative overflow-hidden bg-[#111827] pt-16">
@@ -31,23 +19,23 @@ const manuales = [
                 CAE FES Aragón
             </p>
 
-            <h1 class="font-sans-flex font-bold text-4xl md:text-5xl text-[#D49400] drop-shadow-lg">
-                Manuales de uso
+            <h1 class="font-sans-flex font-bold text-4xl md:text-5xl text-[#D49400] drop-shadow-lg uppercase">
+                Buzón de Quejas y Sugerencias
             </h1>
-            
+
             <p class="mx-auto mt-6 max-w-4xl text-xl font-normal leading-relaxed text-white drop-shadow-md md:text-2xl">
-                Documentación y guías de usuario del Centro de Apoyo Extracurricular
+                Tu voz es fundamental. Ayúdanos a mejorar compartiendo tus quejas, sugerencias o comentarios.
             </p>
         </div>
     </section>
 
-    {manuales.map((manual) => (
-        <PDF 
-            id={manual.id} 
-            title={manual.title} 
-            pdfUrl={manual.pdfUrl} 
-        />
-    ))}
-
+    <main class="bg-white px-6 py-12 flex flex-col items-center">
+        <div class="w-full max-w-4xl bg-white border border-gray-100 rounded-2xl shadow-sm p-4 md:p-6">
+            <div class="w-full min-h-[600px] rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
+                <iframe src="" class="w-full h-full border-0" title="Formulario de Buzón CAE"></iframe>
+            </div>
+        </div>
+    </main>
+    
     <Footer />
 </Layout>
