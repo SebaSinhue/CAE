@@ -13,162 +13,120 @@ const Manual = {
 };
 ---
 
-<Layout title="Manuales de Uso | CAE FES Aragón">
-    <Navbar />
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/jpg" href="/cae-logo.jpg" />
+        <title>Manuales de Uso | CAE FES Aragón</title>
+        <meta
+            name="description"
+            content="Consulta los manuales de uso del CAE FES Aragón"
+        />
+    </head>
 
-    <!-- HERO -->
-    <section
-        id="inicio"
-        class="relative overflow-hidden bg-[#111827] pt-44 pb-24 px-6 scroll-mt-24"
-    >
-        <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-[#1F2937] to-black"></div>
+    <body class="bg-[#F9FAFB] text-[#111827]">
+        
+         <Navbar />
 
-        <div class="absolute inset-0 opacity-20">
-            <div class="h-full w-full bg-[radial-gradient(circle_at_top_right,_#F2A900,_transparent_35%)]"></div>
-        </div>
+        <section class="relative overflow-hidden bg-[#111827] pt-16">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-[#1F2937] to-black"></div>
 
-        <div class="relative z-10 mx-auto flex min-h-[330px] max-w-7xl flex-col items-center justify-center text-center">
-            <p class="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
-                CAE FES Aragón
-            </p>
-
-            <h1 class="font-sans-flex text-4xl font-bold text-[#D49400] drop-shadow-lg md:text-5xl">
-                Manuales de uso
-            </h1>
-
-            <p class="mx-auto mt-6 max-w-4xl text-xl leading-relaxed text-white drop-shadow-md md:text-2xl">
-                Documentación oficial para el uso correcto de equipos y recursos
-                del Centro de Apoyo Extracurricular.
-            </p>
-        </div>
-    </section>
-
-    <!-- ACCESOS -->
-    <section
-        id="manuales"
-        class="scroll-mt-24 px-6 py-16"
-    >
-        <div class="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
-            <a
-                href="#manual-computadora"
-                class="group rounded-xl border border-gray-200 bg-white p-8 shadow-sm transition hover:shadow-md"
-            >
-                <span class="block h-1 w-16 rounded-full bg-[#F2A900]"></span>
-
-                <h2 class="mt-6 text-2xl font-bold text-[#111827]">
-                    Computadora de escritorio
-                </h2>
-
-                <p class="mt-4 text-base leading-relaxed text-[#4B5563]">
-                    Consulta instrucciones básicas para el uso correcto del equipo de cómputo.
-                </p>
-
-                <p class="mt-6 text-sm font-semibold text-[#D49400] transition group-hover:text-[#F2A900]">
-                    Ver manual →
-                </p>
-            </a>
-
-            <a
-                href="#manual-extintor"
-                class="group rounded-xl border border-gray-200 bg-white p-8 shadow-sm transition hover:shadow-md"
-            >
-                <span class="block h-1 w-16 rounded-full bg-[#F2A900]"></span>
-
-                <h2 class="mt-6 text-2xl font-bold text-[#111827]">
-                    Uso de extintor
-                </h2>
-
-                <p class="mt-4 text-base leading-relaxed text-[#4B5563]">
-                    Consulta recomendaciones de seguridad para el uso adecuado del extintor.
-                </p>
-
-                <p class="mt-6 text-sm font-semibold text-[#D49400] transition group-hover:text-[#F2A900]">
-                    Ver manual →
-                </p>
-            </a>
-        </div>
-    </section>
-
-    <!-- MANUAL COMPUTADORA -->
-    <section
-        id="manual-computadora"
-        class="scroll-mt-24 px-6 py-16"
-    >
-        <div class="mx-auto max-w-6xl">
-            <div class="mb-10 text-center">
-                <span class="mx-auto block h-1 w-20 rounded-full bg-[#F2A900]"></span>
-
-                <h2 class="mx-auto mt-6 max-w-5xl text-3xl font-bold tracking-tight text-[#111827] md:text-4xl">
-                    {Manual.manComp}
-                </h2>
+            <div class="absolute inset-0 opacity-20">
+                <div class="h-full w-full bg-[radial-gradient(circle_at_top_right,_#F2A900,_transparent_35%)]"></div>
             </div>
 
-            <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:p-6">
-                <div class="overflow-hidden rounded-lg border border-gray-300 bg-[#1F2937]">
-                    <iframe
-                        src={`${Manual.pdfCompu}#toolbar=1&zoom=page-width`}
-                        title={Manual.manComp}
-                        class="h-[70vh] w-full"
-                    />
+            <div class="relative z-10 mx-auto flex min-h-[330px] max-w-7xl flex-col items-center justify-center px-6 text-center">
+                <p class="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
+                    CAE FES Aragón
+                </p>
+
+                <h1 class="font-sans-flex font-bold text-4xl md:text-5xl text-[#D49400] drop-shadow-lg">
+                    Manuales de uso
+                </h1>
+            </div>
+        </section>
+
+        <!-- MANUAL COMPUTADORA -->
+        <main id="manual-computadora" class="scroll-mt-24 px-6 py-16">
+            <div class="mx-auto max-w-6xl">
+                <div class="mb-10 text-center">
+                    <span class="mx-auto block h-1 w-20 rounded-full bg-[#F2A900]"></span>
+
+                    <h2 class="mx-auto mt-6 max-w-5xl text-3xl font-bold tracking-tight text-[#111827] md:text-4xl">
+                        {Manual.manComp}
+                    </h2>
+                </div>
+
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:p-6">
+                    <div class="overflow-hidden rounded-lg border border-gray-300 bg-[#1F2937]">
+                        <iframe
+                            src={`${Manual.pdfCompu}#toolbar=1&zoom=page-width`}
+                            title={Manual.manComp}
+                            class="h-[70vh] w-full"
+                        >
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex flex-col items-center justify-between gap-4 md:flex-row">
+                    <p class="text-sm text-[#4B5563]">
+                        Si el visor no carga correctamente, abre el archivo en una nueva pestaña.
+                    </p>
+
+                    <a
+                        href={Manual.pdfCompu}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="rounded-lg bg-[#F2A900] px-6 py-3 text-sm font-semibold text-[#111827] shadow-sm transition hover:bg-[#D49400]"
+                    >
+                        Abrir PDF
+                    </a>
                 </div>
             </div>
+        </main>
 
-            <div class="mt-6 flex flex-col items-center justify-between gap-4 md:flex-row">
-                <p class="text-sm text-[#4B5563]">
-                    Si el visor no carga correctamente, abre el archivo en una nueva pestaña.
-                </p>
+        <!-- MANUAL EXTINTOR -->
+        <main id="manual-extintor" class="scroll-mt-24 px-6 py-16">
+            <div class="mx-auto max-w-6xl">
+                <div class="mb-10 text-center">
+                    <span class="mx-auto block h-1 w-20 rounded-full bg-[#F2A900]"></span>
 
-                <a
-                    href={Manual.pdfCompu}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="rounded-lg bg-[#F2A900] px-6 py-3 text-sm font-semibold text-[#111827] shadow-sm transition hover:bg-[#D49400]"
-                >
-                    Abrir PDF
-                </a>
-            </div>
-        </div>
-    </section>
+                    <h2 class="mx-auto mt-6 max-w-5xl text-3xl font-bold tracking-tight text-[#111827] md:text-4xl">
+                        {Manual.manExt}
+                    </h2>
+                </div>
 
-    <!-- MANUAL EXTINTOR -->
-    <section
-        id="manual-extintor"
-        class="scroll-mt-24 px-6 py-16"
-    >
-        <div class="mx-auto max-w-6xl">
-            <div class="mb-10 text-center">
-                <span class="mx-auto block h-1 w-20 rounded-full bg-[#F2A900]"></span>
-                <h2 class="mx-auto mt-6 max-w-5xl text-3xl font-bold tracking-tight text-[#111827] md:text-4xl">
-                    {Manual.manExt}
-                </h2>
-            </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:p-6">
+                    <div class="overflow-hidden rounded-lg border border-gray-300 bg-[#1F2937]">
+                        <iframe
+                            src={`${Manual.pdfExt}#toolbar=1&zoom=page-width`}
+                            title={Manual.manExt}
+                            class="h-[70vh] w-full"
+                        >
+                        </iframe>
+                    </div>
+                </div>
 
-            <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:p-6">
-                <div class="overflow-hidden rounded-lg border border-gray-300 bg-[#1F2937]">
-                    <iframe
-                        src={`${Manual.pdfExt}#toolbar=1&zoom=page-width`}
-                        title={Manual.manExt}
-                        class="h-[70vh] w-full"
-                    />
+                <div class="mt-6 flex flex-col items-center justify-between gap-4 md:flex-row">
+                    <p class="text-sm text-[#4B5563]">
+                        Si el visor no carga correctamente, abre el archivo en una nueva pestaña.
+                    </p>
+
+                    <a
+                        href={Manual.pdfExt}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="rounded-lg bg-[#F2A900] px-6 py-3 text-sm font-semibold text-[#111827] shadow-sm transition hover:bg-[#D49400]"
+                    >
+                        Abrir PDF
+                    </a>
                 </div>
             </div>
+        </main>
 
-            <div class="mt-6 flex flex-col items-center justify-between gap-4 md:flex-row">
-                <p class="text-sm text-[#4B5563]">
-                    Si el visor no carga correctamente, abre el archivo en una nueva pestaña.
-                </p>
+        <Footer />
 
-                <a
-                    href={Manual.pdfExt}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="rounded-lg bg-[#F2A900] px-6 py-3 text-sm font-semibold text-[#111827] shadow-sm transition hover:bg-[#D49400]"
-                >
-                    Abrir PDF
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <Footer />
-</Layout>
+    </body>
+</html>
