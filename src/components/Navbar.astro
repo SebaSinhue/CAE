@@ -1,5 +1,6 @@
 ---
-const isIndex = Astro.url.pathname === '/CAE' || Astro.url.pathname === '/CAE/';
+const currentPath = Astro.url.pathname;
+const isIndex = currentPath === '/CAE' || currentPath === '/CAE/' || currentPath.endsWith('/index.html') || currentPath === '/';
 
 const clasesElementosOcultos = isIndex 
   ? "opacity-100 translate-x-0 md:w-auto" 
@@ -142,10 +143,16 @@ const clasesElementosOcultos = isIndex
 
     window.addEventListener('resize', resetearAlRedimensionar);
 
-    document.addEventListener('click', () => {
+    document.addEventListener('click', (e) => {
       if (window.innerWidth < 768) {
-        menuPrincipal?.classList.add('hidden');
-        listaRecursos?.classList.add('hidden');
+        const target = e.target;
+        const clickDentroMenu = menuPrincipal?.contains(target);
+        const clickDentroBoton = botonMenu?.contains(target);
+
+        if (!clickDentroMenu && !clickDentroBoton) {
+          menuPrincipal?.classList.add('hidden');
+          listaRecursos?.classList.add('hidden');
+        }
       }
     });
 
@@ -199,15 +206,11 @@ const clasesElementosOcultos = isIndex
     });
   };
 
-  const currentPath = window.location.pathname;
-  if (currentPath === '/CAE' || currentPath === '/CAE/' || currentPath.endsWith('/CAE/index.html')) {
-    encapsularMenu();
-  }
+  encapsularMenu();
   document.addEventListener('astro:after-swap', () => {
-    const path = window.location.pathname;
-    if (path === '/CAE' || path === '/CAE/' || path.endsWith('/CAE/index.html')) {
+    setTimeout(() => {
       encapsularMenu();
-    }
+    }, 0);
   });
 </script>
 
