@@ -27,12 +27,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           
       - name: Install, bundle, and configure Astro
         uses: withastro/action@v3
         with:
-          node-version: '20'
+          node-version: '22'
 
   deploy:
     needs: build
