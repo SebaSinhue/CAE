@@ -42,18 +42,25 @@ const clasesElementosOcultos = isIndex
         </li>
         
         <li class={`hidden md:block relative group transition-all duration-500 ease-in-out ${clasesElementosOcultos}`}>
-          <a href="#nosotros" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0 font-bold tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+          <a href="/CAE#nosotros" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0 font-bold tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
             Nosotros
           </a>
           <span class="absolute -bottom-2 left-1 right-1 h-[3px] bg-[#F2A900] transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
         </li>
 
         <li class={`hidden md:block relative group transition-all duration-500 ease-in-out ${clasesElementosOcultos}`}>
-          <a href="#informacion" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0 font-bold tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+          <a href="/CAE#informacion" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0 font-bold tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
             Información importante
           </a>
           <span class="absolute -bottom-2 left-1 right-1 h-[3px] bg-[#F2A900] transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
         </li>
+
+        {!isIndex && (
+          <>
+            <li class="md:hidden"><a href="/CAE#nosotros" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors font-bold">Nosotros</a></li>
+            <li class="md:hidden"><a href="/CAE#informacion" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors font-bold">Información importante</a></li>
+          </>
+        )}
 
         {isIndex && (
           <>
@@ -156,14 +163,14 @@ const clasesElementosOcultos = isIndex
       }
     });
 
-    const links = document.querySelectorAll('a[href^="#"]');
+    const links = document.querySelectorAll('a[href^="#"], a[href^="/CAE#"]');
     
     links.forEach(link => {
       link.addEventListener('click', (e) => {
-        const targetId = link.getAttribute('href');
-        if (!targetId || targetId === '#') return;
+        const hashTarget = link.getAttribute('href').split('#')[1];
+        if (!hashTarget) return;
 
-        const targetElement = document.querySelector(targetId);
+        const targetElement = document.getElementById(hashTarget);
         if (targetElement) {
           e.preventDefault();
 
@@ -196,7 +203,7 @@ const clasesElementosOcultos = isIndex
             if (progress < duration) {
               window.requestAnimationFrame(step);
             } else {
-              history.pushState(null, '', targetId);
+              history.pushState(null, '', '#' + hashTarget);
             }
           };
           
