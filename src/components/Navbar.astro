@@ -1,14 +1,21 @@
 ---
+const isIndex = Astro.url.pathname === '/';
+
+const clasesElementosOcultos = isIndex 
+  ? "opacity-100 translate-x-0 md:w-auto" 
+  : "opacity-0 -translate-x-4 pointer-events-none md:w-0 md:hidden overflow-hidden";
 ---
 
-<nav class="bg-gray-600 fixed w-full z-30 top-0 start-0 border-b border-white/10">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
+<nav id="main-nav" class="bg-gray-600 fixed w-full z-40 top-0 start-0 border-b border-white/10 transition-all duration-300 shadow-sm">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 relative">
     
-    <a href="/" class="group flex items-center space-x-4">
-      <img src="Divisiones_Blanco-07.png" class="h-14 transition-transform duration-300" />
-      <img src="ICO-09.png" class="h-14 transition-transform duration-300" />
+    <a href="/" class="group flex items-center space-x-4 focus:outline-none">
+      <div class="flex items-center space-x-2 p-1.5 transition-colors">
+        <img id="logo-div" src="/Divisiones_Blanco-07.png" class="h-14 w-auto object-contain transition-all duration-500" alt="Divisiones" />
+        <img id="logo-ico" src="/ICO-09.png" class="h-14 w-auto object-contain transition-all duration-500" alt="ICO" />
+      </div>
       <div class="flex flex-col justify-center">
-        <span class="font-sans-flex text-2xl font-bold tracking-normal text-gray-100 leading-none">CAE</span>
+        <span class="font-sans-flex text-2xl font-bold tracking-normal text-gray-100 leading-none drop-shadow-sm">CAE</span>
         <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-20">
           <p class="text-[9px] font-sans-flex text-gray-100 uppercase tracking-widest pt-1 leading-tight">
             Centro de Apoyo <br /> Extracurricular
@@ -17,32 +24,61 @@
       </div>
     </a>
 
-    <button id="boton-menu" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-lg md:hidden hover:bg-gray-900 focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+    <button id="boton-menu" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-lg md:hidden hover:bg-white/10 focus:outline-none transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
     </button>
 
-    <div id="menu-principal" class="hidden w-full md:block md:w-auto absolute md:static top-full left-0 right-0 mx-4 md:mx-0 mt-3 md:mt-0 z-50">
-      <ul class="flex flex-col font-medium p-4 md:p-0 border border-white/10 rounded-2xl bg-black/95 backdrop-blur-xl shadow-2xl md:shadow-none md:flex-row md:space-x-8 md:border-0 md:bg-transparent">
-        <li><a href="/" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0">Inicio</a></li>
-        <li><a href="#nosotros" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0">Nosotros</a></li>
-        <li><a href="#informacion" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0">Información importante</a></li>
+    <div id="menu-principal" class="hidden w-full md:block md:w-auto absolute md:static top-full left-0 right-0 px-4 md:px-0 mt-2 md:mt-0 z-50">
+      <ul id="ul-menu" class="flex flex-col font-medium p-4 md:p-0 border border-white/10 md:border-0 rounded-2xl bg-gray-600 mobile-blur md:backdrop-blur-none md:bg-transparent shadow-2xl md:shadow-none md:flex-row md:items-center md:space-x-4 lg:space-x-6 transition-all duration-300">
         
-        <li class="relative grupo-recursos py-3 md:py-0">
-          <button id="boton-recursos" class="flex items-center justify-between w-full px-4 text-white hover:text-[#F2A900] md:p-0 md:w-auto transition-colors cursor-pointer">
+        <li class="relative group">
+          <a href="/" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0 font-bold tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+            Inicio
+          </a>
+          <span class="hidden md:block absolute -bottom-2 left-1 right-1 h-[3px] bg-[#F2A900] shadow-[0_1px_4px_rgba(242,169,0,0.4)] transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
+        </li>
+        
+        <li class={`hidden md:block relative group transition-all duration-500 ease-in-out ${clasesElementosOcultos}`}>
+          <a href="#nosotros" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0 font-bold tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+            Nosotros
+          </a>
+          <span class="absolute -bottom-2 left-1 right-1 h-[3px] bg-[#F2A900] transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
+        </li>
+
+        <li class={`hidden md:block relative group transition-all duration-500 ease-in-out ${clasesElementosOcultos}`}>
+          <a href="#informacion" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors md:p-0 font-bold tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+            Información importante
+          </a>
+          <span class="absolute -bottom-2 left-1 right-1 h-[3px] bg-[#F2A900] transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
+        </li>
+
+        {isIndex && (
+          <>
+            <li class="md:hidden"><a href="#nosotros" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors font-bold">Nosotros</a></li>
+            <li class="md:hidden"><a href="#informacion" class="block py-3 px-4 text-white hover:text-[#F2A900] transition-colors font-bold">Información importante</a></li>
+          </>
+        )}
+        
+        <li class="relative group grupo-recursos py-1 md:py-0">
+          <button id="boton-recursos" class="flex items-center justify-between w-full py-3 px-4 text-white hover:text-[#F2A900] md:p-0 md:w-auto transition-all font-bold tracking-wide cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
             Recursos y Servicios 
-            <svg class="w-2.5 h-2.5 ms-2.5" fill="none" stroke="currentColor" viewBox="0 0 10 6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+            <svg class="w-2.5 h-2.5 ms-2 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
           </button>
           
-          <div id="lista-recursos" class="hidden md:absolute z-50 font-normal bg-white rounded-xl shadow-xl w-full md:w-52 md:top-full md:mt-0 mt-2 overflow-hidden border border-gray-100">
-            <ul class="py-2 text-sm text-gray-800">
-              <li><a href="/manuales" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Manuales de Uso</a></li>
-              <li><a href="/sgc" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Sistema de Gestión de Calidad</a></li>
-              <li><a href="https://sites.google.com/aragon.unam.mx/laboratoriosaragon/inicio" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Laboratorios</a></li>
-              <li><a href="/cursos" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Cursos Intersemestrales</a></li>
-              <li><a href="https://sites.google.com/aragon.unam.mx/fesaragonico/inicio?authuser=0" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">ICO</a></li>
-              <li><a href="/buzon" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Buzón</a></li>
-              <li><a href="/" class="block px-4 py-2 hover:bg-gray-100 hover:text-black">Servicio Social</a></li>
-            </ul>
+          <div id="lista-recursos" class="hidden md:absolute z-50 font-medium w-full md:w-56 md:top-full md:right-0 md:pt-4 transition-all duration-300">
+            <div class="bg-gray-600/70 md:bg-gray-600/70 backdrop-blur-md rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden border border-white/20">
+              <ul class="py-2 text-sm text-gray-50">
+                <li><a href="/manuales" class="block px-4 py-2.5 hover:bg-white/10 hover:text-[#F2A900] transition-colors font-semibold">Manuales de Uso</a></li>
+                <li><a href="/sgc" class="block px-4 py-2.5 hover:bg-white/10 hover:text-[#F2A900] transition-colors font-semibold">Sistema de Gestión de Calidad</a></li>
+                <li><a href="/cursos" class="block px-4 py-2.5 hover:bg-white/10 hover:text-[#F2A900] transition-colors font-semibold">Cursos Intersemestrales</a></li>
+                <li><a href="https://sites.google.com/aragon.unam.mx/laboratoriosaragon/inicio" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 hover:text-[#F2A900] transition-colors font-semibold">Laboratorios</a></li>
+                <li><a href="https://sites.google.com/aragon.unam.mx/fesaragonico/inicio?authuser=0" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 hover:text-[#F2A900] transition-colors font-semibold">ICO</a></li>
+                <li><a href="/buzon" class="block px-4 py-2.5 hover:bg-white/10 hover:text-[#F2A900] transition-colors font-semibold">Buzón</a></li>
+                <li class="border-t border-white/10 mt-1 pt-1"><a href="/" class="block px-4 py-2.5 hover:bg-white/10 hover:text-[#F2A900] transition-colors font-semibold">Servicio Social</a></li>
+              </ul>
+            </div>
           </div>
         </li>
       </ul>
@@ -51,11 +87,38 @@
 </nav>
 
 <script is:inline>
-  (function() {
+  const encapsularMenu = () => {
     const botonMenu = document.getElementById('boton-menu');
     const menuPrincipal = document.getElementById('menu-principal');
     const botonRecursos = document.getElementById('boton-recursos');
     const listaRecursos = document.getElementById('lista-recursos');
+
+    const nav = document.getElementById('main-nav');
+    const ulMenu = document.getElementById('ul-menu');
+    const logoDiv = document.getElementById('logo-div');
+    const logoIco = document.getElementById('logo-ico');
+
+    if (!botonMenu) return;
+
+    const manejarScrollResize = () => {
+      if (window.scrollY > 120) {
+        nav?.classList.replace('bg-gray-600', 'bg-gray-600/40');
+        ulMenu?.classList.replace('bg-gray-600', 'bg-gray-600/60');
+        nav?.classList.replace('py-4', 'py-1.5');
+        logoDiv?.classList.replace('h-14', 'h-10');
+        logoIco?.classList.replace('h-14', 'h-10');
+      } else {
+        nav?.classList.replace('bg-gray-600/40', 'bg-gray-600');
+        ulMenu?.classList.replace('bg-gray-600/60', 'bg-gray-600');
+        nav?.classList.replace('py-1.5', 'py-4');
+        logoDiv?.classList.replace('h-10', 'h-14');
+        logoIco?.classList.replace('h-10', 'h-14');
+      }
+    };
+
+    window.removeEventListener('scroll', manejarScrollResize);
+    window.addEventListener('scroll', manejarScrollResize);
+    manejarScrollResize();
 
     const resetearAlRedimensionar = () => {
       if (window.innerWidth >= 768) {
@@ -64,7 +127,7 @@
       }
     };
 
-    botonMenu?.addEventListener('click', (e) => {
+    botonMenu.addEventListener('click', (e) => {
       e.stopPropagation();
       menuPrincipal?.classList.toggle('hidden');
     });
@@ -85,7 +148,59 @@
         listaRecursos?.classList.add('hidden');
       }
     });
-  })();
+
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+
+          if (window.innerWidth < 768) {
+            menuPrincipal?.classList.add('hidden');
+          }
+
+          const navOffset = 70; 
+          const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navOffset;
+          const startPosition = window.scrollY;
+          const distance = targetPosition - startPosition;
+          
+          const duration = 1800; 
+          let start = null;
+
+          const easeInOutCubic = (t, b, c, d) => {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t * t + b;
+            t -= 2;
+            return c / 2 * (t * t * t + 2) + b;
+          };
+
+          const step = (timestamp) => {
+            if (!start) start = timestamp;
+            const progress = timestamp - start;
+            const run = easeInOutCubic(progress, startPosition, distance, duration);
+
+            window.scrollTo(0, run);
+
+            if (progress < duration) {
+              window.requestAnimationFrame(step);
+            } else {
+              history.pushState(null, '', targetId);
+            }
+          };
+          
+          window.requestAnimationFrame(step);
+        }
+      });
+    });
+  };
+
+  encapsularMenu();
+  document.addEventListener('astro:after-swap', encapsularMenu);
 </script>
 
 <style>
@@ -101,10 +216,11 @@
 
     .grupo-recursos:hover #lista-recursos {
       display: block;
+      animation: navMenuFadeIn 0.2s ease-out forwards;
     }
 
-    #lista-recursos {
-      top: 100%;
+    .grupo-recursos:hover #boton-recursos svg {
+      transform: rotate(180deg);
     }
   }
 
@@ -112,6 +228,21 @@
     #menu-principal {
       position: absolute;
       top: 100%;
+    }
+    .mobile-blur {
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+  }
+
+  @keyframes navMenuFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 </style>

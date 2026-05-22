@@ -5,8 +5,9 @@ import Footer from '../components/Footer.astro';
 import Card from '../components/Card.astro';
 ---
 
-<Layout title="SCG | CAE FES Aragón">
+<Layout title="SGC | CAE FES Aragón">
     <Navbar />
+    
     <section class="relative overflow-hidden bg-[#111827] pt-16">
         <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-[#1F2937] to-black"></div>
 
@@ -20,7 +21,7 @@ import Card from '../components/Card.astro';
             </p>
 
             <h1 class="font-sans-flex text-4xl font-bold text-[#D49400] drop-shadow-lg md:text-5xl">
-                SCG
+                SGC
             </h1>
 
             <p class="mx-auto mt-6 max-w-4xl text-xl font-normal leading-relaxed text-white drop-shadow-md md:text-2xl">
@@ -31,32 +32,44 @@ import Card from '../components/Card.astro';
 
     <section class="bg-white px-6 py-16">
         <div class="mx-auto max-w-7xl">
-            <h2 class="mb-10 text-center text-3xl font-bold text-[#111827]">
-                ¿QUÉ ES UN SISTEMA DE GESTIÓN DE CALIDAD?
-            </h2>
+            <div class="mb-12 text-center">
+                <span class="mx-auto block h-1 w-20 rounded-full bg-[#F2A900]"></span>
+                <h2 class="mt-6 font-sans-flex text-3xl font-bold tracking-tight text-[#111827] md:text-4xl">
+                    ¿Qué es un Sistema de Gestión de Calidad?
+                </h2>
+            </div>
 
-            <div class="grid items-center gap-10 lg:grid-cols-2">
-                <Card titulo="Politica de Calidad">
-                    En los laboratorios de Ingeniería L1,L2,L3,L4, se ofrece el servicio de apoyo para la ejecución de 
-                    las prácticas de las materias curriculares; y la gestión de cursos extracurriculares y préstamo de 
-                    salas en el Centro de Apoyo Extracurricular CAE a los estudiantes de las carreras de ingeniería de 
-                    la FES Aragón; buscando la satisfacción de los mismos, con el compromiso de cumplir los Objetivos 
-                    de la Calidad de los laboratorios, basados en la norma ISO 9001:2015, así como los requisitos aplicables, 
-                    a través de la mejora continua de nuestros procesos y considerando los aspectos internos y externos 
-                    que pudieran influir en su desempeño.
-                </Card>
-            
-                <div class="overflow-hidden rounded-xl shadow-lg">
-                    <iframe
-                        class="aspect-video w-full"
-                        src="https://www.youtube.com/embed/iLixT3kk-1I"
-                        title="¿Qué es un sistema de gestión de calidad?"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-6xl mx-auto">
+                
+                <div class="flex h-full">
+                    <Card titulo="Política de Calidad">
+                        <p class="text-justify">
+                            En los laboratorios de Ingeniería L1, L2, L3, L4, se ofrece el servicio de apoyo para la ejecución de 
+                            las prácticas de las materias curriculares; y la gestión de cursos extracurriculares y préstamo de 
+                            salas en el Centro de Apoyo Extracurricular CAE a los estudiantes de las carreras de ingeniería de 
+                            la FES Aragón; buscando la satisfacción de los mismos, con el compromiso de cumplir los Objetivos 
+                            de la Calidad de los laboratorios, basados en la norma ISO 9001:2015, así como los requisitos aplicables, 
+                            a través de la mejora continua de nuestros procesos y considerando los aspectos internos y externos 
+                            que pudieran influir en su desempeño.
+                        </p>
+                    </Card>
                 </div>
+                
+                <div class="flex flex-col justify-center overflow-hidden rounded-2xl border border-gray-100 bg-black shadow-sm group hover:shadow-xl transition-all duration-300">
+                    <div class="w-full aspect-video">
+                        <iframe
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/iLixT3kk-1I"
+                            title="¿Qué es un sistema de gestión de calidad?"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+    
     <Footer />
 </Layout>

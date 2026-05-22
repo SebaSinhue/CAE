@@ -2,8 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import Manual from '../components/Manual.astro';
-
+import PDF from '../components/PDF.astro';
 const manuales = [
   {
     id: "manual-computadora",
@@ -39,7 +38,7 @@ const manuales = [
     </section>
 
     {manuales.map((manual) => (
-        <Manual 
+        <PDF 
             id={manual.id} 
             title={manual.title} 
             pdfUrl={manual.pdfUrl} 

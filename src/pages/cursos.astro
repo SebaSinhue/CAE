@@ -4,6 +4,8 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Card from '../components/Card.astro';
 
+import { Icon } from 'astro-icon/components';
+
 const cursos = [
   {
     titulo: "Visión Artificial con Redes Neuronales Profundas",
@@ -161,7 +163,7 @@ const cursos = [
   },
   {
     titulo: "Taller de Planeación Prospectiva",
-    instructor:"Ing. Pedro Uriel Martinez Martinez",
+    instructor: "Ing. Pedro Uriel Martinez Martinez",
     fecha: "Inicia 15 de junio de 2026 (Registro límite: 11 de junio)",
     horas: "10 Horas",
     modalidad: "Línea",
@@ -176,63 +178,164 @@ const cursos = [
 <Layout title="Cursos Intersemestrales - CAE FES Aragón">
     <Navbar />
     
-    <div class="max-w-7xl mx-auto px-6 mt-32 mb-20">
-        
-        <div class="mb-12 border-b border-[#9CA3AF]/30 pb-8 text-center md:text-left">
-            <h1 class="text-4xl font-extrabold text-[#111827] tracking-tight sm:text-5xl">
-                Cursos <span class="text-[#F2A900]">Intersemestrales</span>
-            </h1>
-            <p class="text-[#4B5563] mt-3 text-lg max-w-3xl">
-                ¡Fortalece tus habilidades con nuestra oferta de cursos de junio! Contamos con modalidades presenciales y en línea para potenciar tu perfil profesional.
-            </p>
+    <section class="relative overflow-hidden bg-[#111827] pt-16">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-[#1F2937] to-black"></div>
+
+        <div class="absolute inset-0 opacity-20">
+            <div class="h-full w-full bg-[radial-gradient(circle_at_top_right,_#F2A900,_transparent_35%)]"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cursos.map((curso) => (
-                <Card titulo={curso.titulo}>
-                    <div class="flex flex-col h-full justify-between mt-3">
-                        <div>
-                            <div class="flex gap-2 mb-4 flex-wrap">
-                                <span class="bg-[#FFF7E6] text-[#D49400] text-xs font-bold px-3 py-1 rounded-full border border-[#F2A900]/30">
-                                    {curso.categoria}
-                                </span>
-                                <span class={`text-xs font-bold px-3 py-1 rounded-full border ${
-                                    curso.modalidad === 'Línea' 
-                                    ? 'bg-blue-50 text-blue-600 border-blue-200' 
-                                    : 'bg-green-50 text-green-600 border-green-200'
-                                }`}>
-                                    💻 {curso.modalidad}
-                                </span>
-                            </div>
+        <div class="relative z-10 mx-auto flex min-h-[330px] max-w-7xl flex-col items-center justify-center px-6 text-center">
+            <p class="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
+                CAE FES Aragón
+            </p>
 
-                            <div class="space-y-2 text-sm text-[#4B5563] mb-6">
-                                <p><strong class="text-[#111827]">Impartido por:</strong> {curso.instructor}</p>
-                                <p><strong class="text-[#111827]">Calendario:</strong> {curso.fecha}</p>
-                                <div class="flex justify-between text-xs text-[#9CA3AF] pt-2 border-t border-gray-100">
-                                    <span>⏱️ {curso.horas}</span>
-                                    <span>👥 Cupo: {curso.cupo}</span>
+            <h1 class="font-sans-flex text-4xl font-bold text-[#D49400] drop-shadow-lg md:text-5xl">
+                CURSOS INTERSEMESTRALES
+            </h1>
+
+            <p class="mx-auto mt-6 max-w-4xl text-xl font-normal leading-relaxed text-white drop-shadow-md md:text-2xl">
+                Oferta de Cursos Intersemestrales
+            </p>
+        </div>
+    </section>
+
+    <section class="bg-[#FFFFFF] px-6 py-16">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 text-center">
+                <span class="mx-auto block h-1 w-20 rounded-full bg-[#F2A900]"></span>
+                <p class="text-[#4B5563] mt-6 text-lg max-w-3xl mx-auto leading-relaxed">
+                    ¡Fortalece tus habilidades con nuestra oferta de cursos! <br>
+                    Contamos con modalidades presenciales y en línea diseñadas para potenciar tu perfil profesional en ingeniería.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+                {cursos.map((curso) => (
+                    <div class="flex flex-col h-full">
+                        <Card titulo={curso.titulo}>
+                            <div class="flex flex-col flex-1 h-full justify-between mt-3">
+                                <div>
+                                    <div class="flex gap-2 mb-4 flex-wrap">
+                                        <span class="bg-[#FFF7E6] text-[#D49400] text-xs font-bold px-3 py-1 rounded-full border border-[#F2A900]/30">
+                                            {curso.categoria}
+                                        </span>
+                                        <span class={`text-xs font-bold px-3 py-1 rounded-full border flex items-center gap-1.5 ${
+                                            curso.modalidad === 'Línea' 
+                                            ? 'bg-blue-50 text-blue-600 border-blue-200' 
+                                            : 'bg-green-50 text-green-600 border-green-200'
+                                        }`}>
+                                            <Icon name={curso.modalidad === 'Línea' ? 'lucide:monitor' : 'lucide:map-pin'} class="w-3.5 h-3.5" />
+                                            {curso.modalidad}
+                                        </span>
+                                    </div>
+
+                                    <div class="space-y-3 text-sm text-[#4B5563] mb-6">
+                                        <p><strong class="text-[#111827]">Impartido por:</strong> {curso.instructor}</p>
+                                        <p><strong class="text-[#111827]">Calendario:</strong> {curso.fecha}</p>
+                                        
+                                        <div class="flex justify-between text-xs text-[#9CA3AF] pt-3 border-t border-gray-100 items-center">
+                                            <span class="flex items-center gap-1">
+                                                <Icon name="lucide:clock" class="w-3.5 h-3.5 text-[#4B5563]" />
+                                                {curso.horas}
+                                            </span>
+                                            <span class="flex items-center gap-1">
+                                                <Icon name="lucide:users" class="w-3.5 h-3.5 text-[#4B5563]" />
+                                                Cupo: {curso.cupo}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                                
+                                <div class="flex flex-col gap-2 mt-auto">
+                                    <button 
+                                        data-folleto={curso.link} 
+                                        data-titulo={curso.titulo}
+                                        class="btn-abrir-modal w-full text-center inline-block px-4 py-2 text-xs font-bold text-[#374151] bg-[#FFF7E6] border border-[#F2A900]/40 rounded-lg hover:bg-[#F2A900] hover:text-white transition-all cursor-pointer"
+                                    >
+                                        Ver Folleto Informativo
+                                    </button>
+
+                                    <a href={curso.registro} target="_blank" rel="noopener noreferrer" class={`w-full text-center inline-block px-4 py-2.5 text-sm font-bold text-white rounded-lg transition-all ${
+                                        curso.registro === '#' 
+                                        ? 'bg-[#9CA3AF] cursor-not-allowed pointer-events-none' 
+                                        : 'bg-[#111827] hover:bg-[#374151] hover:shadow-md'
+                                    }`}>
+                                        {curso.registro === '#' ? 'Registro No Disponible' : 'Inscribirse Directo'}
+                                    </a>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="flex flex-col gap-2">
-                            <a href={curso.link} target="_blank" rel="noopener noreferrer" class="w-full text-center inline-block px-4 py-2 text-xs font-bold text-[#374151] bg-[#FFF7E6] border border-[#F2A900]/40 rounded-lg hover:bg-[#F2A900] hover:text-white transition-all">
-                                 Ver Folleto Informativo
-                            </a>
-
-                            <a href={curso.registro} target="_blank" rel="noopener noreferrer" class={`w-full text-center inline-block px-4 py-2.5 text-sm font-bold text-white rounded-lg transition-all ${
-                                curso.registro === '#' 
-                                ? 'bg-gray-300 cursor-not-allowed pointer-events-none' 
-                                : 'bg-[#111827] hover:bg-[#374151] hover:shadow-md'
-                            }`}>
-                                {curso.registro === '#' ? 'Registro No Disponible' : ' Inscribirse Directo'}
-                            </a>
-                        </div>
+                        </Card>
                     </div>
-                </Card>
-            ))}
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <div id="modal-folleto" class="fixed inset-0 z-50 hidden items-center justify-center p-4 transition-all duration-300">
+        <div id="modal-overlay" class="absolute inset-0 bg-[#111827]/80 backdrop-blur-sm"></div>
+        
+        <div class="relative z-10 max-w-3xl w-full bg-[#FFFFFF] rounded-2xl overflow-hidden shadow-2xl border border-[#9CA3AF]/20 flex flex-col max-h-[90vh]">
+            
+            <div class="flex items-center justify-between border-b border-gray-100 px-6 py-4 bg-[#F9FAFB]">
+                <h3 id="modal-titulo" class="text-sm md:text-base font-bold text-[#111827] truncate pr-4">Folleto</h3>
+                
+                <button id="btn-cerrar-modal" class="text-[#4B5563] hover:text-[#111827] transition-colors cursor-pointer p-1 rounded-lg hover:bg-gray-200/60">
+                    <Icon name="lucide:x" class="w-5 h-5" />
+                </button>
+            </div>
+            
+            <div class="overflow-y-auto p-4 bg-[#1F2937] flex justify-center items-center">
+                <img id="modal-imagen" src="" alt="Folleto del Curso" class="max-w-full h-auto rounded-lg object-contain shadow-md" />
+            </div>
         </div>
     </div>
 
     <Footer />
 </Layout>
+
+<script is:inline>
+    const setupModal = () => {
+        const modal = document.getElementById('modal-folleto');
+        const overlay = document.getElementById('modal-overlay');
+        const btnCerrar = document.getElementById('btn-cerrar-modal');
+        const modalImg = document.getElementById('modal-imagen');
+        const modalTitulo = document.getElementById('modal-titulo');
+        const botonesAbrir = document.querySelectorAll('.btn-abrir-modal');
+
+        if (!modal || !btnCerrar || !modalImg || !modalTitulo) return;
+
+        const abrirModal = (src, titulo) => {
+            modalImg.src = src;
+            modalTitulo.textContent = titulo;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        };
+
+        const cerrarModal = () => {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            modalImg.src = '';
+            document.body.classList.remove('overflow-hidden');
+        };
+
+        botonesAbrir.forEach(boton => {
+            boton.addEventListener('click', () => {
+                const src = boton.getAttribute('data-folleto');
+                const titulo = boton.getAttribute('data-titulo');
+                abrirModal(src, titulo);
+            });
+        });
+
+        btnCerrar.addEventListener('click', cerrarModal);
+        overlay.addEventListener('click', cerrarModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') cerrarModal();
+        });
+    };
+
+    setupModal();
+    document.addEventListener('astro:after-swap', setupModal);
+</script>
