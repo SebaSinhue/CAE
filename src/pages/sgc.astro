@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout title="SCG | CAE FES Aragón">
+    <Navbar />
+    <section class="relative overflow-hidden bg-[#111827] pt-16">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#111827] via-[#1F2937] to-black"></div>
+
+        <div class="absolute inset-0 opacity-20">
+            <div class="h-full w-full bg-[radial-gradient(circle_at_top_right,_#F2A900,_transparent_35%)]"></div>
+        </div>
+
+        <div class="relative z-10 mx-auto flex min-h-[330px] max-w-7xl flex-col items-center justify-center px-6 text-center">
+            <p class="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-[#F2A900]">
+                CAE FES Aragón
+            </p>
+
+            <h1 class="font-sans-flex text-4xl font-bold text-[#D49400] drop-shadow-lg md:text-5xl">
+                SCG
+            </h1>
+
+            <p class="mx-auto mt-6 max-w-4xl text-xl font-normal leading-relaxed text-white drop-shadow-md md:text-2xl">
+                Sistema de Gestión de Calidad
+            </p>
+        </div>
+    </section>
+
+    <section class="bg-white px-6 py-16">
+        <div class="mx-auto max-w-7xl">
+            <h2 class="mb-10 text-center text-3xl font-bold text-[#111827]">
+                ¿QUÉ ES UN SISTEMA DE GESTIÓN DE CALIDAD?
+            </h2>
+
+            <div class="grid items-center gap-10 lg:grid-cols-2">
+                <Card titulo="Politica de Calidad">
+                    En los laboratorios de Ingeniería L1,L2,L3,L4, se ofrece el servicio de apoyo para la ejecución de 
+                    las prácticas de las materias curriculares; y la gestión de cursos extracurriculares y préstamo de 
+                    salas en el Centro de Apoyo Extracurricular CAE a los estudiantes de las carreras de ingeniería de 
+                    la FES Aragón; buscando la satisfacción de los mismos, con el compromiso de cumplir los Objetivos 
+                    de la Calidad de los laboratorios, basados en la norma ISO 9001:2015, así como los requisitos aplicables, 
+                    a través de la mejora continua de nuestros procesos y considerando los aspectos internos y externos 
+                    que pudieran influir en su desempeño.
+                </Card>
+            
+                <div class="overflow-hidden rounded-xl shadow-lg">
+                    <iframe
+                        class="aspect-video w-full"
+                        src="https://www.youtube.com/embed/iLixT3kk-1I"
+                        title="¿Qué es un sistema de gestión de calidad?"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <Footer />
+</Layout>

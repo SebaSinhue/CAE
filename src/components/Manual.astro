@@ -1,0 +1,47 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  pdfUrl: string;
+}
+
+const { id, title, pdfUrl } = Astro.props;
+---
+
+<main id={id} class="scroll-mt-24 px-6 py-16">
+    <div class="mx-auto max-w-6xl">
+        <div class="mb-10 text-center">
+            <span class="mx-auto block h-1 w-20 rounded-full bg-[#F2A900]"></span>
+
+            <h2 class="mx-auto mt-6 max-w-5xl text-3xl font-bold tracking-tight text-[#111827] md:text-4xl">
+                {title}
+            </h2>
+        </div>
+
+        <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:p-6">
+            <div class="overflow-hidden rounded-lg border border-gray-300 bg-[#1F2937]">
+                <iframe
+                    src={`${pdfUrl}#toolbar=1&zoom=page-width`}
+                    title={title}
+                    class="h-[70vh] w-full"
+                >
+                </iframe>
+            </div>
+        </div>
+
+        <div class="mt-6 flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p class="text-sm text-[#4B5563]">
+                Si el visor no carga correctamente, abre el archivo en una nueva pestaña.
+            </p>
+
+            <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-lg bg-[#F2A900] px-6 py-3 text-sm font-semibold text-[#111827] shadow-sm transition hover:bg-[#D49400]"
+            >
+                Abrir PDF
+            </a>
+        </div>
+    </div>
+</main>
