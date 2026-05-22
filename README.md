@@ -29,7 +29,6 @@ Los objetivos principales del sitio son:
 - Organización modular mediante componentes reutilizables.
 - Uso de estilos personalizados para mantener una identidad visual institucional.
 - Distribución ordenada de secciones para mejorar la lectura y comprensión del contenido.
-- Sitio publicado mediante GitHub Pages.
 
 ---
 
@@ -39,10 +38,9 @@ El proyecto fue desarrollado utilizando tecnologías web modernas enfocadas en r
 
 - **Astro**: Framework principal para la construcción del sitio web.
 - **HTML5**: Estructura semántica del contenido.
-- **CSS3**: Diseño visual, estilos personalizados y adaptación responsiva.
+- **Tailwind CSS**: Diseño visual, estilos personalizados y adaptación responsiva.
 - **JavaScript**: Funcionalidades interactivas dentro del sitio.
 - **Git**: Control de versiones durante el desarrollo.
 - **GitHub**: Almacenamiento del repositorio y colaboración del equipo.
-- **GitHub Pages**: Despliegue público del sitio web.
 
 ---
